@@ -7,6 +7,8 @@ import scipy.spatial.distance as dist
 def mean(items, eps):
     return pd.Series([item for item in items]).mean() >= eps
 
+def median(items, eps):
+    return pd.Series(items).median() >= eps
 
 def qtest(items, value):
     '''
