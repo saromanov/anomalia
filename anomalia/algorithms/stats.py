@@ -1,5 +1,6 @@
 import pandas as pd
 import scipy.spatial.distance as dist
+import scipy.stats as st
 
 #Statistics methods for anomaly detection
 
@@ -50,5 +51,8 @@ def gribbs(self, items):
     std = series.std()
     size = series.size()
     z_score = (items - mean) / std
+
+def chi_square(self, items, eps):
+    return st.chisquare(items)
 
 
