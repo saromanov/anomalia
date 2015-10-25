@@ -48,5 +48,7 @@ def gribbs(self, items):
     series = pd.Series(items)
     mean = series.mean()
     std = series.std()
+    size = series.size()
     z_score = (items - mean) / std
+
 
