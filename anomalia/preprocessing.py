@@ -1,5 +1,5 @@
 from sklearn import preprocessing
-from scipy import ndimage, misc
+from scipy import ndimage
 
 
 class Preprocessing:
@@ -7,11 +7,15 @@ class Preprocessing:
         self._data = data
 
     def scale(self):
+        ''' Standardization of data
+        '''
         return preprocessing.scale(self._data)
 
     def normalize(self):
+        ''' Normalization of data
+        '''
         return preprocessing.normalize(self._data, norm='l2')
 
     def img_preprocess(self):
-        return ndimage.gaussian_filter(img, 5)
+        return ndimage.gaussian_filter(self._data, 5)
 
