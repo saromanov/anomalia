@@ -11,7 +11,7 @@ class Unsupervised:
         ''' KMeans algorithms for clustering data
         '''
         model = KMeans(n_clusters=clusters, init='k-means++')
-        model.fit(data)
+        model.fit(items)
         return model.predict(items)
 
     def pca(self, items):
