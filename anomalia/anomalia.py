@@ -1,3 +1,7 @@
+import os
+import logging
+
+logging.basicConfig(level = logging.DEBUG)
 
 class Item:
     def __init__(self, event, pattern, entity):
@@ -11,6 +15,11 @@ class Anomalia:
         self.datatype = datatype
         self.events = []
         self.isrunning = False
+
+    def _read(self, path):
+        if os.path.exists(path) is False:
+            logging.error('File {0} is not found'.format(path))
+            return
 
     def preprocessing(self):
         ''' preprocessing data before apply it to algorithms
