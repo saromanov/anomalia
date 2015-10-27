@@ -1,8 +1,12 @@
 import os
 import logging
 import numpy as np
+import preprocessing
 
 logging.basicConfig(level = logging.DEBUG)
+
+FILETYPE = 'file'
+IMAGETYPE = 'images'
 
 class Item:
     def __init__(self, event, pattern, entity):
@@ -12,6 +16,12 @@ class Item:
 
 class Anomalia:
     def __init__(self, datatype, labels=None, data = None, filepath=None):
+        '''
+          datatype provides specification of data for loading
+          types:
+              - file
+              - images
+        '''
         self.data = data
         self.datatype = datatype
         self.events = []
@@ -40,7 +50,7 @@ class Anomalia:
                 result.append([float(item) for item in line.split()])
             return np.array(result)
 
-    def preprocessing(self):
+    def preprocess(self):
         ''' preprocessing data before apply it to algorithms
         '''
         pass
