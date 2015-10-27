@@ -34,7 +34,9 @@ class Anomalia:
             f = open(path, 'r')
             result = []
             logging.info("Try to load data from file")
-            for line in f.readlines():
+            lines = f.readlines()
+            f.close()
+            for line in lines:
                 result.append([float(item) for item in line.split()])
             return np.array(result)
 
