@@ -53,7 +53,8 @@ class Anomalia:
     def preprocess(self):
         ''' preprocessing data before apply it to algorithms
         '''
-        pass
+        if self.datatype == FILETYPE:
+            self.data = preprocessing.normalize(preprocessing.scale(self.data))
 
     def addEvent(self, data):
         if isinstance(data, list):
