@@ -50,11 +50,18 @@ class Anomalia:
                 result.append([float(item) for item in line.split()])
             return np.array(result)
 
-    def preprocess(self):
+    def preprocessing(self, path=None):
         ''' preprocessing data before apply it to algorithms
         '''
+        import preprocess
         if self.datatype == FILETYPE:
-            self.data = preprocessing.normalize(preprocessing.scale(self.data))
+            item = prepare.Prepare()
+            item.read(path)
+            .preprocess(replace_na='mean')
+            .cleanFields()
+            .strToNumAll()
+            .toMatrix())
+
 
     def addEvent(self, data):
         if isinstance(data, list):
