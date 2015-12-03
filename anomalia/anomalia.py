@@ -1,7 +1,7 @@
 import os
 import logging
 import numpy as np
-import preprocessing
+import prepare
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -53,14 +53,12 @@ class Anomalia:
     def preprocessing(self, path=None):
         ''' preprocessing data before apply it to algorithms
         '''
-        import preprocess
         if self.datatype == FILETYPE:
             item = prepare.Prepare()
-            item.read(path)
-            .preprocess(replace_na='mean')
-            .cleanFields()
-            .strToNumAll()
-            .toMatrix())
+            item.add_data(self.data).preprocess(replace_na='mean').\
+                    cleanFields().\
+                    strToNumAll().\
+                    toMatrix()
 
 
     def addEvent(self, data):
@@ -75,6 +73,12 @@ class Anomalia:
         self.isrunning = False
 
     def start(self):
+        if self.data is None:
+            raise Exception("Data is not found")
+        pass
+
+
+    def start_online(self):
         ''' Start anomaly detection in real time
         '''
         self.isrunning = True
