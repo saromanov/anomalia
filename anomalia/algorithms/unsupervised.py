@@ -1,5 +1,6 @@
 from sklearn.clustering import KMeans
 from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
 
 #Anomaly detection with unsupervised learning algorithms
 
@@ -14,11 +15,12 @@ class Unsupervised:
         model.fit(items)
         return model.predict(items)
 
-    def pca(self, items):
+    def pca(self, items, components=3):
         ''' Principal component analysis for dimension reduction
             and data decomposition
         '''
-        pass
+        pca = PCA(n_components=components)
+        return pca.fit(X)
 
     def tsne(self, items, components=3):
         '''
